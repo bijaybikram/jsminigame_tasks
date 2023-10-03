@@ -15,24 +15,24 @@
 
     canvas.addEventListener("mousemove", (event) => {
         // console.log(event.clientX)
-        const corX = event.clientX - 5;
-        const corY = event.clientY - 5;
+        const corX = event.clientX - 7;
+        const corY = event.clientY - 7;
 
         //box
     context.clearRect(0,0, 300, 300)
     context.beginPath();
     context.fillStyle = "blue";
-    context.arc(corX,corY, 30, 0, 360);
+    context.arc(corX,corY, 30, 0, 2*Math.PI);
     context.fill();
 
     context.beginPath();
     context.fillStyle = "red"
-    context.arc(corX,corY, 20, 0, 360);
+    context.arc(corX,corY, 20, 0, 2*Math.PI);
     context.fill()
     
     context.beginPath();
     context.fillStyle = "yellow"
-    context.arc(corX,corY, 10, 0, 360);
+    context.arc(corX,corY, 10, 0, 2*Math.PI);
     context.fill()
     })
 </script>
