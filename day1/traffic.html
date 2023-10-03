@@ -14,7 +14,8 @@
     let canvas = document.getElementById("canvas");  // paper
     let context = canvas.getContext("2d"); //pen
     
-    // this is a board
+    const changeLight = (red, green, yellow) => {
+            // this is a board
     context.beginPath();
     context.fillStyle = "black";
     context.rect(0,0, 250, 100);
@@ -22,21 +23,45 @@
     
     // red circle
     context.beginPath();
-    context.fillStyle = "red";
+    context.fillStyle = red ? "red" : "black";
     context.arc(50, 50, 25, 0, 2* Math.PI);
     context.fill();
     
     // green circle
     context.beginPath();
-    context.fillStyle = "green";
+    context.fillStyle = green ? "green" : "black";
     context.arc(125, 50, 25, 0, 2* Math.PI);
     context.fill();
     
     // yellow circle
     context.beginPath();
-    context.fillStyle = "yellow";
+    context.fillStyle = yellow ? "yellow" : "black";
     context.arc(200, 50, 25, 0, 2* Math.PI);
     context.fill();
+    }
+
+    let redLight = true;
+    let greenLight = false;
+    let yellowLight = false;
+
+    setInterval( () => {
+        changeLight(redLight, greenLight, yellowLight);
+        
+        if(redLight){
+            redLight = false;
+            greenLight = true;
+        }
+        else if (greenLight){
+            greenLight = false;
+            yellowLight = true;
+        } else {
+            yellowLight = false;
+            redLight = true;
+        }
+    
+    }, 2000)
+    
+    
     
     
 
