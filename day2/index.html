@@ -5,35 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <canvas id="canvas" style="background-color: black;" width="300" height="300"></canvas>
+<body style=" background-color: rgb(123, 188, 188);">
+    <canvas id="canvas" style="border: 2px solid black;" width="1000" height="500"></canvas>
 </body>
 <script>
     const canvas = document.getElementById("canvas")
     const context = canvas.getContext("2d");
+
+        context.beginPath();
+        context.fillStyle = "yellow"
+        context.rect(0, 0, 1000, 400)
+        context.fill()
+
+        context.beginPath();
+        context.fillStyle = "blue"
+        context.rect(0, 400, 1000, 500)
+        context.fill()
+        
     
 
     canvas.addEventListener("mousemove", (event) => {
         // console.log(event.clientX)
-        const corX = event.clientX - 7;
-        const corY = event.clientY - 7;
+        const corX = event.clientX - 10;
+        const corY = event.clientY - 10;
 
         //box
-    context.clearRect(0,0, 300, 300)
-    context.beginPath();
-    context.fillStyle = "blue";
-    context.arc(corX,corY, 30, 0, 2*Math.PI);
-    context.fill();
+        context.clearRect(0,0, 1000, 500)
+        context.beginPath();
+        context.fillStyle = "blue";
+        context.arc(corX,corY, 30, 0, 2*Math.PI);
+        context.fill();
 
-    context.beginPath();
-    context.fillStyle = "red"
-    context.arc(corX,corY, 20, 0, 2*Math.PI);
-    context.fill()
-    
-    context.beginPath();
-    context.fillStyle = "yellow"
-    context.arc(corX,corY, 10, 0, 2*Math.PI);
-    context.fill()
+        context.beginPath();
+        context.fillStyle = "red"
+        context.arc(corX,corY, 20, 0, 2*Math.PI);
+        context.fill()
+        
+        context.beginPath();
+        context.fillStyle = "yellow"
+        context.arc(corX,corY, 10, 0, 2*Math.PI);
+        context.fill()
     })
 </script>
 </html>

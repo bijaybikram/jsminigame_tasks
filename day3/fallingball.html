@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>falling ball</title>
+</head>
+<body>
+    <canvas id="canvas" style="background-color: red;" width="500" height="500"></canvas>
+</body>
+<script>
+    const canvas = document.getElementById("canvas")
+    const c = canvas.getContext('2d');
+
+
+    //    console.log(canvas);
+   
+        canvas.addEventListener('mousedown', (e)=> {
+
+        let x = e.clientX;
+        let y = e.clientY;
+        let r = 10;     // radius of ball
+        let dy = -2;    // downward velocity
+        let gravity = 0.1
+        let bounceFactor = -1
+
+
+       // To render the ball
+        function drawBall(x, y) {
+            c.beginPath();
+            c.fillStyle = "yellow";
+            c.arc(x, y, r, 0, 2* Math.PI);
+            c.fill();
+            // y += 1;
+
+            // condition to stop the ball at ground
+            
+            console.log(y)
+        }
+        
+        const updateBallPosition = () => {
+            // clear the canvas
+            c.clearRect(0, 0, canvas.width, canvas.height)
+
+            // update ball position
+            dy += gravity;
+            y += dy;
+
+            // check for the collision on the canvas border
+            if(y > canvas.height - r) {
+                y = canvas.height - r;
+                dy *= bounceFactor;
+
+            }
+
+            
+
+        }
+        
+        // function to animate the fall
+        const fall = () => {
+            c.clearRect(0,0, 500,500);
+            renderBall(x, y++)
+            window.requestAnimationFrame(fall)
+            if(y === 500){
+                renderBall(x, y -= 1 )
+                console.log(y)
+            }
+
+        }
+        fall()
+        
+
+    })
+
+    
+                
+    
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncy ball</title>
+</head>
+<body>
+    <canvas id="canvas" style="background-color: green;" width="500" height="500"></canvas>
+</body>
+<script>
+    const canvas = document.getElementById("canvas")
+    const c = canvas.getContext("2d")
+
+    let x;
+    let y;
+    let dy = 1
+    let r = 10
+
+    
+
+    document.addEventListener("mousedown", (e)=>{
+        x = e.clientX;
+        y = e.clientY
+        // render ball 
+        const renderBall = () => {
+        c.beginPath()
+        c.fillStyle = "yellow"
+        c.arc(x, y, r, 0, 2*Math.PI)
+        c.fill()
+        y += dy
+        
+    }
+        // animating the ball
+        const animate = () => {
+        
+        c.clearRect(0, 0, canvas.width, canvas.height)
+        renderBall()
+        if(y + dy <= canvas.height - r){
+            window.requestAnimationFrame(animate)
+        } 
+        
+        console.log(y)
+        }
+        
+        animate()
+
+    })
+
+    
+</script>
+</html>
