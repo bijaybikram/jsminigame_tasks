@@ -14,38 +14,49 @@
 
     let x;
     let y;
-    let dy = 1
-    let r = 10
+    let dy = 1  // falling speed
+    // let gravity = 0.02  // gravity for acceleration
+    let r = 10  // radius of ball
+    let isGround = false  // ground of canvas
 
     
 
     document.addEventListener("mousedown", (e)=>{
         x = e.clientX;
         y = e.clientY
-        // render ball 
-        const renderBall = () => {
+        isGround = false
+        
+    })
+
+    // render ball 
+    function renderBall() {
+         
         c.beginPath()
         c.fillStyle = "yellow"
         c.arc(x, y, r, 0, 2*Math.PI)
         c.fill()
-        y += dy
-        
     }
-        // animating the ball
+
+        // animating the ball loop
         const animate = () => {
         
         c.clearRect(0, 0, canvas.width, canvas.height)
-        renderBall()
-        if(y + dy <= canvas.height - r){
-            window.requestAnimationFrame(animate)
-        } 
+
+        // fall until it reaches ground
+        if(!isGround){
+            // dy += gravity
+            y += dy;
+        }
         
-        console.log(y)
+        // stop after reaching ground
+        if (y > canvas.height - r){
+            isGround = true;
+        }
+        renderBall()
+        window.requestAnimationFrame(animate)
         }
         
         animate()
-
-    })
 
     
 </script>
