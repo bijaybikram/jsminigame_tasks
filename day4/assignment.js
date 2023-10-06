@@ -15,8 +15,8 @@ class Particle {
     // let xMin
     // this.dy = Math.ceil(Math.random() * 2);
     // this.yMin
-    this.gravity = 0.1;
-    this.bounceForce = -0.8;
+    this.gravity = 0.07;
+    // this.bounceForce = -0.8;
   }
   //   color() {
   //     c.fillStyle = `#${Math.floor(Math.random() * 16777215)
