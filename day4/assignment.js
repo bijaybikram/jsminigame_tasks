@@ -4,8 +4,8 @@ let totalParticles = 100;
 
 class Particle {
   constructor() {
-    this.x = Math.random() * 500;
-    this.y = Math.random() * 500;
+    this.x = Math.random() * (490 - 20) + 20;
+    this.y = Math.random() * (490 - 20) + 20;
     this.r = Math.random() * (40 - 5) + 5;
     this.dv = Math.ceil(Math.random() * 2);
     this.color = `#${Math.floor(Math.random() * 16777215)
@@ -50,15 +50,15 @@ class Particle {
     }
   }
 
-  bounceVertical() {
-    if (y <= canvas.width) {
-      y += dy;
-    }
-    if (y == canvas.width) {
-      y -= dy;
-      dy += gravity;
-    }
-  }
+  //   bounceVertical() {
+  //     if (y <= canvas.width) {
+  //       y += dy;
+  //     }
+  //     if (y == canvas.width) {
+  //       y -= dy;
+  //       dy += gravity;
+  //     }
+  //   }
 }
 
 const particleArray = [];
