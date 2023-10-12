@@ -13,6 +13,11 @@ const randomColor = () => {
   return colors;
 };
 
+const random = (min, max) => {
+  const num = Math.random() * (max - min) + min;
+  return num;
+};
+
 class Ball {
   constructor(x, y, r, color) {
     this.x = x;
@@ -58,6 +63,7 @@ class Ball {
       this.y_speed = -1; //return to left
       this.gravity = -0.1;
       this.color = randomColor();
+      //   this.r = randomSize();
     } else if (this.y - this.r < 0) {
       // check collision on left side
       console.log("collide");
@@ -77,7 +83,7 @@ class Ball {
 for (let i = 0; i < ballnos; i++) {
   const x = Math.random() * (500 - 0) + 0;
   const y = Math.random() * (500 - 0) + 0;
-  const r = Math.random() * (30 - 5) + 5;
+  const r = random(5, 30);
   const color = randomColor();
   const balls = new Ball(x, y, r, color);
   ballArray.push(balls);
